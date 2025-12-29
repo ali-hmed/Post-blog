@@ -42,6 +42,8 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('myBlogPosts', JSON.stringify(posts));
     };
 
+
+    // render posts grid
     const renderPosts = () => {
         postsContainer.innerHTML = '';
 
@@ -74,6 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
+    // open create modal
     const openCreateModal = () => {
         blogForm.reset();
         postIdInput.value = '';
@@ -87,6 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
         viewPostModal.classList.remove('active');
     };
 
+
+    // handle form submit
     const handleFormSubmit = (e) => {
         e.preventDefault();
 
@@ -116,6 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
         closeModals();
     };
 
+    // view post
     window.viewPost = (id) => {
         const post = posts.find(p => p.id == id);
         if (post) {
@@ -130,6 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    // edit post
     window.editPost = (id) => {
         const post = posts.find(p => p.id == id);
         if (post) {
@@ -144,6 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    // delete post
     window.deletePost = (id) => {
         if (confirm('Are you sure you want to delete this post?')) {
             posts = posts.filter(p => p.id != id);
